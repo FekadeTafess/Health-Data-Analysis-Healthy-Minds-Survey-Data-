@@ -15,7 +15,36 @@ The Economics of Mental Health: A Statistical AnalysisAssessing the Impact of Ba
 
 🔬 Methodology & DataDataset: Healthy Minds Study (HMS) 2024-2025.Sample Size: $N = 69,842$.
 
+Step 1: Data Acquisition & Target PopulationThe Dataset: The study utilized the Healthy Minds Study (HMS) 2024–2025 public dataset.Sample Size: The final cleaned dataset yielded an $N = 69,842$ respondent pool.Target Population: Undergraduate and graduate students across multiple higher education institutions, capturing a diverse layout of ages, financial backgrounds, and genders as visualized in demographic_economic_visual_3.png.
 Analytical Approach:Data Cleaning: Standardized gender variables and addressed missingness (under 5%). Statistical Modeling: Logistic Regression was employed to calculate Odds Ratios (OR), isolating the "risk multiplier" effect of specific insecurities.
+
+Step 2: Feature Selection & Variable Mapping
+Variables were selected based on a framework treating economic constraints as Social Determinants of Health (SDoH). The core variables extracted included:
+
+Dependent Variables (Outcomes): Clinical screening indicators for depression (dep_any, deprawsc, dep_maj) and anxiety (anx_any, anx_score).
+
+Independent Variables (Predictors): Indicators of economic stress, specifically current financial strain (fincur), food worry (food_worry), and housing worry (housing_worry).
+
+Control Variables (Covariates): Sociodemographic factors including age (age), financial past (finpast), Pell Grant status (pellgrant), and gender (gender_male, gender_female) to isolate confounding effects.
+
+Step 3: Data Cleaning & Preprocessing
+Handling Missingness: Missing data across the core research variables was evaluated using missingness matrices (such as the missingno tracking protocol) to ensure data completeness. Missing values were minimal (under 5%) and handled via listwise deletion to maintain model integrity.
+
+Feature Engineering: Categorical indicators for gender were harmonized into binary flags (gender_male, gender_female), and ordinal scales for basic needs worries were standardized to accurately reflect risk gradients (low to high stress).
+
+Step 4: Exploratory Data Analysis (EDA)
+Prevalence Profiling: Descriptive statistics established the baseline clinical landscape, identifying that 36% of the population screened positive for depression and 33% for anxiety.
+
+Trend Analysis: Cross-tabulations were performed to map the "staircase effect"—visualizing how incremental increases in food or housing worry directly mapped to higher percentages of mental health distress.
+
+Step 5: Statistical Modeling via Logistic RegressionBecause the primary outcomes (e.g., screening positive for depression or anxiety) are binary, Logistic Regression was selected as the core mathematical framework.The model estimates the probability ($P$) of a student experiencing clinical distress using the log-odds formula:$$\ln\left(\frac{P}{1 - P}\right) = \beta_0 + \beta_1(\text{Housing Worry}) + \beta_2(\text{Food Worry}) + \beta_3(\text{Financial Stress}) + \gamma(\mathbf{X})$$Where $\mathbf{X}$ represents the vector of control covariates (age, gender, etc.), and $\beta$ represents the log-odds coefficients.
+
+Step 6: Risk Quantification (Odds Ratios)To make the findings clinically interpretable, the log-odds coefficients ($\beta$) were converted into Odds Ratios (OR) by taking their exponential ($e^\beta$):This step successfully isolated the independent "risk multiplier" effect of each basic need.For instance, it allowed us to prove that housing instability independently increases the odds of clinical depression by 39%, and food insecurity by 36%, even when students share identical age, gender, and demographic backgrounds.
+
+Step 7: Interaction & Cumulative Impact Evaluation
+The "Double Jeopardy" Check: Finally, the analysis looked beyond individual predictors to examine cumulative burden.
+
+By evaluating the overlap of multiple stressors, the methodology successfully demonstrated a compounding, synergistic effect—proving that students experiencing both food and housing insecurity face an exponentially higher risk profile than those dealing with just one.
 
 📊 Key Findings 
 
@@ -23,7 +52,7 @@ Analytical Approach:Data Cleaning: Standardized gender variables and addressed m
 
 2. Statistical Significance By using Odds Ratios, the research demonstrates that basic needs insecurity is not just a correlate but an independent predictor. This means that even when controlling for other demographic factors, these economic pressures significantly raise the probability of a clinical diagnosis.
 
-🚀 Implications & ROIThe research suggests a transition in how higher education and healthcare approach student success:Clinical Integration: SDoH screening should be standard in campus health clinics.Targeted Investment: Programs like "Housing-First" or food pantries are not just social services; they are mental health interventions with a measurable Return on Investment (ROI) regarding student retention and wellbeing.
+🚀 Implications & ROI The research suggests a transition in how higher education and healthcare approach student success:Clinical Integration: SDoH screening should be standard in campus health clinics.Targeted Investment: Programs like "Housing-First" or food pantries are not just social services; they are mental health interventions with a measurable Return on Investment (ROI) regarding student retention and wellbeing.
 
 ⚠️ Limitations Cross-Sectional Design: The data shows correlation and association; it cannot definitively establish a temporal sequence of causation.Self-Report Bias: Findings rely on student self-reporting, which may be influenced by social desirability or recall biases.
 
